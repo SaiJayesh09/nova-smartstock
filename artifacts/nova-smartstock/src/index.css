@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 42 31% 96%;
+  --foreground: 204 28% 17%;
+  --border: 38 19% 86%;
+  --card: 0 0% 100%;
+  --card-foreground: 204 28% 17%;
+  --card-border: 38 19% 86%;
+  --sidebar: 202 32% 18%;
+  --sidebar-foreground: 42 31% 96%;
+  --sidebar-border: 202 27% 27%;
+  --sidebar-primary: 151 55% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 202 27% 25%;
+  --sidebar-accent-foreground: 42 31% 96%;
+  --sidebar-ring: 151 55% 48%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 204 28% 17%;
+  --popover-border: 38 19% 86%;
+  --primary: 151 55% 37%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 30% 91%;
+  --secondary-foreground: 204 28% 20%;
+  --muted: 42 22% 92%;
+  --muted-foreground: 204 11% 48%;
+  --accent: 33 83% 94%;
+  --accent-foreground: 27 65% 35%;
+  --destructive: 2 68% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 38 19% 82%;
+  --ring: 151 55% 37%;
+  --chart-1: 151 55% 37%;
+  --chart-2: 34 80% 55%;
+  --chart-3: 204 42% 39%;
+  --chart-4: 2 68% 51%;
+  --chart-5: 275 32% 56%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Manrope', sans-serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 204 28% 13%;
+  --foreground: 42 31% 96%;
+  --border: 204 18% 28%;
+  --card: 204 25% 17%;
+  --card-foreground: 42 31% 96%;
+  --card-border: 204 18% 28%;
+  --sidebar: 204 30% 11%;
+  --sidebar-foreground: 42 31% 96%;
+  --sidebar-border: 204 18% 23%;
+  --sidebar-primary: 151 55% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 204 21% 20%;
+  --sidebar-accent-foreground: 42 31% 96%;
+  --sidebar-ring: 151 55% 48%;
+  --popover: 204 25% 17%;
+  --popover-foreground: 42 31% 96%;
+  --popover-border: 204 18% 28%;
+  --primary: 151 55% 48%;
+  --primary-foreground: 204 28% 12%;
+  --secondary: 204 21% 23%;
+  --secondary-foreground: 42 31% 96%;
+  --muted: 204 21% 23%;
+  --muted-foreground: 204 12% 70%;
+  --accent: 33 32% 25%;
+  --accent-foreground: 33 75% 80%;
+  --destructive: 2 68% 57%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 204 18% 31%;
+  --ring: 151 55% 48%;
+  --chart-1: 151 55% 48%;
+  --chart-2: 34 80% 60%;
+  --chart-3: 204 42% 59%;
+  --chart-4: 2 68% 57%;
+  --chart-5: 275 32% 66%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer base {
+  body { margin: 0; min-width: 320px; background: #f5f2eb; }
+  button, input, select { font: inherit; }
+  button, a, select { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 3px solid #62b98b; outline-offset: 2px; }
+}
+
+.app-shell { min-height: 100dvh; display: flex; color: #263740; }
+.sidebar { width: 244px; flex: 0 0 244px; background: #203740; color: #f6f4ec; padding: 28px 18px; display:flex; flex-direction:column; }
+.brand { display:flex; align-items:center; gap:11px; padding: 0 10px 34px; }
+.brand-mark { width:35px;height:35px;border-radius:11px;background:#55b980;color:#163b31;display:grid;place-items:center;font:800 17px var(--font-serif);letter-spacing:-1px; }
+.brand-name { font:800 17px var(--font-serif); letter-spacing:.07em; line-height:1.1; }
+.brand-sub { color:#adbfba;font-size:10px;letter-spacing:.15em;margin-top:4px; }
+.nav-label { color:#91a8a6;font-weight:700;font-size:10px;letter-spacing:.15em;padding:0 12px;margin:7px 0 10px; }
+.nav-links { display:grid; gap:7px; }
+.nav-link { text-decoration:none;color:#c7d3cf;border-radius:9px;padding:12px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;transition:background .18s,color .18s; }
+.nav-link:hover,.nav-link.active { color:#fff;background:#314b52; }
+.nav-link.active { box-shadow:inset 3px 0 #62c48d; }
+.sidebar-foot { margin-top:auto;border-top:1px solid #40575c;padding:18px 10px 0;color:#aabbb7;font-size:11px;line-height:1.6; }
+.sidebar-foot strong { color:#edf2ec; display:block;font-size:12px; }
+.main-area { min-width:0;flex:1; }
+.topbar { height:72px;background:#fbfaf6;border-bottom:1px solid #e9e4da;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,56px); }
+.topbar-left { display:flex;gap:10px;align-items:center;color:#6c7a7a;font-size:12px; }
+.live-dot { width:8px;height:8px;border-radius:50%;background:#51b77d;box-shadow:0 0 0 4px #e5f4e9; }
+.topbar-right { font-size:12px;color:#596c70;display:flex;align-items:center;gap:9px; }
+.avatar { width:31px;height:31px;display:grid;place-items:center;background:#e8eee6;color:#27614d;border-radius:50%;font-weight:700;font-size:11px; }
+.content { max-width:1210px;margin:0 auto;padding:39px clamp(18px,4vw,56px) 64px; }
+.eyebrow { color:#3c9167;font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase; }
+.page-head { display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:27px; }
+.page-head h1 { font:800 clamp(27px,3.2vw,36px)/1.15 var(--font-serif);letter-spacing:-.045em;color:#203740;margin:8px 0 8px; }
+.page-head p { margin:0;color:#788482;font-size:13px; }
+.store-select-wrap { display:flex;align-items:center;gap:9px;color:#71807f;font-size:12px; }
+.field-select,.search-input { border:1px solid #e0ded5;background:#fff;border-radius:9px;color:#263740;padding:11px 13px;outline:none; }
+.field-select { min-width:190px; }
+.field-select:focus,.search-input:focus { border-color:#55ac7a;box-shadow:0 0 0 3px #e7f4eb; }
+.overview-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px; }
+.metric-card { background:#fff;border:1px solid #ebe7de;border-radius:12px;padding:17px 19px;position:relative;overflow:hidden; }
+.metric-top { display:flex;justify-content:space-between;align-items:center;color:#72807e;font-size:11px;font-weight:600; }
+.metric-icon { width:31px;height:31px;display:grid;place-items:center;border-radius:9px;background:#eff5ee;color:#3d9466; }
+.metric-value { font:800 27px var(--font-serif);letter-spacing:-.04em;margin-top:13px;color:#223940; }
+.metric-note { color:#87918e;font-size:11px;margin-top:3px; }
+.alert-banner { display:flex;align-items:flex-start;gap:12px;background:#fff8ea;border:1px solid #f1dfb5;border-radius:10px;padding:14px 16px;margin-bottom:23px;color:#705827; }
+.alert-icon { margin-top:1px;color:#c48a21; }
+.alert-title {font-size:12px;font-weight:800;color:#765717;margin-bottom:3px;}
+.alert-copy {font-size:11px;line-height:1.55;color:#8a7344;}
+.section-card { background:#fff;border:1px solid #e9e5dc;border-radius:12px;overflow:hidden; }
+.section-heading { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #efede7; }
+.section-heading h2 {font:700 15px var(--font-serif);margin:0;color:#263a40;}
+.section-heading p {font-size:11px;color:#87918e;margin:5px 0 0;}
+.count-pill { background:#eff4ed;color:#4b755b;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:700;white-space:nowrap; }
+.table-wrap { overflow-x:auto; }
+.inventory-table { width:100%;border-collapse:collapse;text-align:left; }
+.inventory-table th { padding:11px 20px;background:#fcfbf8;color:#8a9390;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:800; }
+.inventory-table td { padding:13px 20px;border-top:1px solid #f0eee8;font-size:12px;vertical-align:middle; }
+.product-name {font-weight:700;color:#263a40;font-size:12px;}
+.product-category {font-size:10px;color:#8b9591;margin-top:4px;}
+.price {font-weight:700;color:#384c4d;white-space:nowrap;}
+.status-pill {display:inline-flex;align-items:center;gap:6px;border-radius:20px;padding:6px 9px;font-size:10px;font-weight:700;white-space:nowrap;}
+.status-pill:before { content:"";width:6px;height:6px;border-radius:50%;background:currentColor; }
+.status-available {background:#e7f4e9;color:#32794d;}
+.status-low {background:#fff2d8;color:#9a6b16;}
+.status-out {background:#fbe9e6;color:#b34c40;}
+.updated {color:#76827f;font-size:10px;white-space:nowrap;}
+.stale-note {display:flex;align-items:center;gap:6px;color:#bd6c3c;font-size:10px;margin-top:5px;font-weight:600;}
+.status-select {border:1px solid #e3e4dc;background:#fff;border-radius:8px;color:#455450;padding:7px 25px 7px 9px;font-size:10px;cursor:pointer; }
+.table-empty {padding:45px 20px;text-align:center;color:#778581;}
+.empty-symbol {width:42px;height:42px;margin:0 auto 12px;border-radius:14px;background:#eef4ee;color:#4b9c6d;display:grid;place-items:center;}
+.empty-title {font-size:13px;font-weight:700;color:#34494a;margin-bottom:5px;}
+.empty-text {font-size:11px;}
+.customer-intro {background:#203740;color:#f6f4ec;border-radius:14px;padding:27px clamp(20px,4vw,38px);margin-bottom:22px;position:relative;overflow:hidden;}
+.customer-intro:after {content:"";position:absolute;width:210px;height:210px;right:8%;top:-125px;border:1px solid #45625f;border-radius:50%;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05;}
+.customer-intro .eyebrow {color:#7dd29d;}
+.customer-intro h1 {font:800 clamp(25px,3.4vw,37px)/1.15 var(--font-serif);letter-spacing:-.04em;margin:9px 0;color:#fff;}
+.customer-intro p {color:#c1d0ca;font-size:13px;margin:0;max-width:520px;}
+.search-panel {display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:12px;background:#fff;border:1px solid #ebe7de;padding:15px;border-radius:12px;margin-bottom:17px;}
+.search-box {position:relative;display:flex;align-items:center;}
+.search-box svg {position:absolute;left:13px;color:#8b9691;}
+.search-input {width:100%;padding-left:40px;font-size:12px;height:43px;}
+.result-line {display:flex;justify-content:space-between;align-items:center;color:#74817d;font-size:11px;margin:20px 2px 11px;}
+.product-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.customer-product {background:#fff;border:1px solid #ebe7de;border-radius:12px;padding:17px 18px;transition:transform .18s,border-color .18s;}
+.customer-product:hover {transform:translateY(-2px);border-color:#bfd9c5;}
+.product-card-top {display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.customer-product h3 {font:700 14px var(--font-serif);color:#273d42;margin:1px 0 6px;}
+.customer-product .category-line {font-size:10px;color:#89938f;}
+.product-card-foot {border-top:1px solid #f0eee8;margin-top:16px;padding-top:12px;display:flex;justify-content:space-between;align-items:center;color:#87918d;font-size:10px;}
+.customer-price {font:800 16px var(--font-serif);color:#2d5545;}
+.customer-updated {display:flex;align-items:center;gap:5px;}
+.customer-empty {grid-column:1/-1;border:1px dashed #d8d9cf;border-radius:12px;padding:40px 16px;text-align:center;background:#faf9f4;}
+.mobile-nav {display:none;}
+.fade-in {animation:rise .35s ease both;}
+@keyframes rise {from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px) { .sidebar{width:205px;flex-basis:205px;} .content{padding-left:25px;padding-right:25px;} .inventory-table td,.inventory-table th{padding-left:13px;padding-right:13px;} }
+@media(max-width:680px) {
+ .app-shell{display:block;padding-bottom:67px}.sidebar{display:none}.topbar{height:58px;padding:0 18px}.content{padding:26px 16px 36px}
+ .topbar-right .topbar-name{display:none}.page-head{display:block}.page-head .store-select-wrap{margin-top:17px;align-items:flex-start;flex-direction:column;gap:7px}.field-select{width:100%}
+ .overview-grid{gap:8px}.metric-card{padding:13px 12px}.metric-value{font-size:23px}.metric-note{font-size:9px}.metric-top{font-size:10px}.metric-icon{width:27px;height:27px}
+ .alert-banner{padding:12px}.section-heading{padding:15px}.inventory-table th{font-size:8px}.inventory-table td{padding:12px 10px}.product-name{font-size:11px}.updated{font-size:9px}.status-select{max-width:125px;padding:7px 19px 7px 7px}
+ .customer-intro{padding:24px 20px}.customer-intro p{font-size:12px}.search-panel{grid-template-columns:1fr;padding:11px;gap:9px}.search-panel .field-select{height:42px}.product-grid{grid-template-columns:1fr}.result-line{margin-top:17px}
+ .mobile-nav{position:fixed;display:grid;grid-template-columns:1fr 1fr;bottom:0;left:0;right:0;background:#203740;padding:7px 12px max(7px,env(safe-area-inset-bottom));z-index:20;box-shadow:0 -5px 20px #14262a20}
+ .mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px;text-decoration:none;color:#adc0ba;font-size:9px;font-weight:700}.mobile-nav a.active{color:#8cdda9}
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "NOVA SmartStock"
+description = "A quick-commerce inventory prototype for NOVA CART store teams and customers, with editable store stock, customer search, and stale-stock verification alerts."
+version = "1.0.0"
+id = "artifacts/nova-smartstock"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22963
+
+[services.development]
+run = "pnpm --filter @workspace/nova-smartstock run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nova-smartstock", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nova-smartstock/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22963"
+BASE_PATH = "/"
